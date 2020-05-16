@@ -1,2 +1,2 @@
 # quote-generator
-Generate a quote based on tags or randomly.
+A quote generator that will produce a quote randomly or by tags.
