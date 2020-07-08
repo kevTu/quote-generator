@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <form method="POST">
+    {% csrf_token %}
+    <ul>
+      <li>
+        {{ answer }}
+      </li>
+      <li>
+        <button type='submit'>Submit</button>
+      </li>
+    </ul>
+  </form>
+</body>
+</html>
