@@ -10,12 +10,12 @@ import random
 class HomeView(APIView):
     
     def get(self, request):
-        # tmp = {'text': 'This is a cool story.', 'author': 'Joe Yeager'}
+        print("PRINTING REQUEST:", request.GET)
         url = "https://type.fit/api/quotes"
         result = requests.get(url).json()
         rand = random.randint(0, len(result))
-        #if not result[rand].author:
-        #    result[rand].author = "Unknown"
+        if result[rand]["author"] is None:
+            result[rand]["author"] = "Unknown"
         return Response(result[rand], status=status.HTTP_200_OK)
 
         
