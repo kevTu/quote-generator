@@ -23,8 +23,23 @@ class App extends Component {
       );
   }*/
 
-  getQuote = () => {
-    const url = "http://127.0.0.1:8000/";
+  getTagQuote = () => {
+    const url = "http://127.0.0.1:8000/tag/?type=love";
+    fetch(url)
+      .then(resp => resp.json())
+      .then(data => 
+        this.setState({
+          //isLoaded: true,
+          val: data,
+        })
+      )
+      .catch(error => {
+        console.log(error)
+      });
+  }
+
+  getRandomQuote = () => {
+    const url = "http://127.0.0.1:8000/random/";
     fetch(url)
       .then(resp => resp.json())
       .then(data => 
@@ -45,9 +60,14 @@ class App extends Component {
     }*/
     return (
       <div className="App">
-        <button onClick={this.getQuote}>Random Quote</button>
-        <div>text: {val.text}</div>
-        <div>author: {val.author}</div>
+        <h1>Based On Tags</h1>
+        <button onClick={this.getTagQuote}>Love</button>
+        <h1>Randomizer</h1>
+        <button onClick={this.getRandomQuote}>Random Quote</button>
+        <div style={{ padding:"100px" }}>
+          <div>text: {val.text}</div>
+          <div>author: {val.author}</div>
+        </div>
       </div>
     );
   }
