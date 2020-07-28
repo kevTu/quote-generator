@@ -1,6 +1,7 @@
-from django.urls import path
-from .views import HomeView
+from django.urls import path, re_path
+from .views import RandomView, TagView
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('random/', RandomView.as_view()),
+    re_path(r'^tag/$', TagView.as_view()),
 ]
